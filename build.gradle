@@ -1,7 +1,7 @@
 plugins {
 	id 'io.github.goooler.shadow' version '8.1.7' apply false
 	id 'dev.architectury.loom' version '1.13-SNAPSHOT' apply false
-	id 'io.github.goooler.shadow' version '8.1.7' apply false
+	id 'architectury-plugin' version '3.4-SNAPSHOT'
 }
 
 apply plugin: 'architectury-plugin'
@@ -38,13 +38,16 @@ subprojects {
 		minecraft "net.minecraft:minecraft:$rootProject.minecraftVersion"
 		mappings loom.officialMojangMappings()
 
-		modImplementation files("../libs/Iceberg-1.21.3-common-1.2.10.jar")
-		modImplementation files("../libs/LegendaryTooltips-1.21.3-common-1.5.0.jar")
-		modImplementation "curse.maven:adorned-1036809:5515068"
-		modImplementation "curse.maven:accessories-938917:5576244"
-		modImplementation "curse.maven:accessoriestrinkets-1005680:5575593"
-		modImplementation("org.ladysnake.cardinal-components-api:cardinal-components-base:6.1.0")
-		modImplementation("org.ladysnake.cardinal-components-api:cardinal-components-entity:6.1.0")
+		modImplementation files("../libs/Iceberg-1.21.11-common-1.4.0.1.jar")
+		modImplementation files("../libs/LegendaryTooltips-1.21.11-common-1.6.0.jar")
+
+		// Compile only because these mods do not have a 1.21.11 version.
+		modCompileOnly "curse.maven:accessories-938917:5576244"
+		modCompileOnly "curse.maven:accessoriestrinkets-1005680:5575593"
+
+		modImplementation "curse.maven:curios-309927:7642217"
+		modImplementation("org.ladysnake.cardinal-components-api:cardinal-components-base:7.3.2")
+		modImplementation("org.ladysnake.cardinal-components-api:cardinal-components-entity:7.3.2")
 	}
 
 	java {
