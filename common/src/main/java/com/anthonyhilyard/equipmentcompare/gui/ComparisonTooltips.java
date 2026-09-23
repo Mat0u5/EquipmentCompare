@@ -66,7 +66,7 @@ public class ComparisonTooltips
 		MutableComponent equippedBadge = getEquippedBadge().withStyle(textColor);
 
 		boolean constrainToRect = false;
-		Matrix3x2fStack poseStack = graphics.pose();
+		Matrix3x2fStack matrix = graphics.pose();
 
 		if (showBadge)
 		{
@@ -75,8 +75,8 @@ public class ComparisonTooltips
 				rect = new Rect2i(rect.getX(), screen.height - rect.getHeight() - 4, rect.getWidth(), rect.getHeight());
 			}
 
-			poseStack.pushMatrix();
-			poseStack.translate(rect.getX(), rect.getY());
+			matrix.pushMatrix();
+			matrix.translate(rect.getX(), rect.getY());
 
 			int badgeOffset = 0;
 
@@ -111,10 +111,10 @@ public class ComparisonTooltips
 				}
 				else
 				{
-					poseStack.pushMatrix();
-					poseStack.translate(0.0f, 0.0f);
+					matrix.pushMatrix();
+					matrix.translate(0.0f, 0.0f);
 					Tooltips.renderGradientBackground(graphics, 4, -14 + badgeOffset, rect.getWidth(), rect.getHeight() + 12, bgColor, bgColorEnd);
-					poseStack.popMatrix();
+					matrix.popMatrix();
 				}
 
 				if (!gradientBorder)
@@ -124,13 +124,13 @@ public class ComparisonTooltips
 				}
 				else
 				{
-					poseStack.pushMatrix();
-					poseStack.translate(0.0f, 0.0f);
+					matrix.pushMatrix();
+					matrix.translate(0.0f, 0.0f);
 					Tooltips.renderGradientBorder(graphics, 4, -14 + badgeOffset, rect.getWidth(), rect.getHeight() + 12, borderStartColor, borderEndColor);
-					poseStack.popMatrix();
+					matrix.popMatrix();
 				}
 
-				poseStack.popMatrix();
+				matrix.popMatrix();
 				Tooltips.renderItemTooltip(itemStack, new Tooltips.TooltipInfo(tooltipLines, font, Tooltips.calculateTitleLines(tooltipLines)), rect, screen.width, screen.height, DEFAULT_BACKGROUND_COLOR, DEFAULT_BACKGROUND_COLOR, DEFAULT_BORDER_COLOR_START, DEFAULT_BORDER_COLOR_END, graphics, positioner, true, constrainToRect, centeredTitle, index, null, true, true);
 			}
 			else
@@ -145,15 +145,15 @@ public class ComparisonTooltips
 				GuiHelper.drawGradientRect(graphics, 1,					-16 + badgeOffset, rect.getWidth() + 7, -15 + badgeOffset, borderStartColor, borderStartColor);
 				GuiHelper.drawGradientRect(graphics, 1,					 -5 + badgeOffset,  rect.getWidth() + 7, -4 + badgeOffset, borderEndColor,   borderEndColor);
 
-				poseStack.popMatrix();
+				matrix.popMatrix();
 				Tooltips.renderItemTooltip(itemStack, new Tooltips.TooltipInfo(tooltipLines, font, Tooltips.calculateTitleLines(tooltipLines)), rect, screen.width, screen.height, DEFAULT_BACKGROUND_COLOR, DEFAULT_BACKGROUND_COLOR, DEFAULT_BORDER_COLOR_START, DEFAULT_BORDER_COLOR_END, graphics, positioner, true, constrainToRect, centeredTitle, index);
 			}
 
-			poseStack.pushMatrix();
-			poseStack.translate(rect.getX(), rect.getY());
+			matrix.pushMatrix();
+			matrix.translate(rect.getX(), rect.getY());
 			graphics.drawCenteredString(font, equippedBadge, rect.getWidth() / 2 + 4, badgeOffset - 14, -1);
 
-			poseStack.popMatrix();
+			matrix.popMatrix();
 		}
 		else
 		{
