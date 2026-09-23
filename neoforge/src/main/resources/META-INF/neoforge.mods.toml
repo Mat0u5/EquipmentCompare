@@ -15,7 +15,7 @@ description='''Adds additional tooltips when hovering over equipment for easy co
 [[dependencies.equipmentcompare]]
 	modId="neoforge"
 	type="required"
-	versionRange="[21,)"
+	versionRange="[21.11.42,)"
 	ordering="NONE"
 	side="BOTH"
 
