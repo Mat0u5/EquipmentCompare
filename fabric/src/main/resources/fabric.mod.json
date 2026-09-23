@@ -35,7 +35,7 @@
 		"fabric-api": "*",
 		"minecraft": "=1.21.11",
 		"java": ">=21",
-		"iceberg": ">=1.4.0"
+		"iceberg": ">=1.4.0.2"
 	},
 	"suggests": {
 		"trinkets": ">=3.10.0",
